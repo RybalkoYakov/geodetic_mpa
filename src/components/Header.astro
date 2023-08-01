@@ -7,14 +7,14 @@ import Logo from "./Logo.astro";
     <nav>
         <ul class="w-full h-full font-medium flex flex-wrap gap-6 text-[20px] text-red-500 justify-end drop-shadow">
             <li class="header__icon_link">
-                <a class="flex align-middle hover:text-white transition-colors duration-300" href="viber://chat?number=+375445224566">
-                    <img class="number_icon mr-2 block w-[30px] h-[30px]" src="/viber.svg" alt="telegram logo" >
+                <a class="flex align-middle hover:text-white transition-colors duration-300" href="viber://contact?number=%2B375445224566">
+                    <img class="number_icon mr-2 block w-[30px] h-[30px]" src="/viber.svg" alt="viber icon" >
                     <span class="number_text flex align-middle justify-center">+375 (44) 522-45-66</span>
                 </a>
             </li>
             <li class="mr-10 flex align-middle header__icon_link">
-                <a class="flex align-middle hover:text-white transition-colors duration-300" href="tel:+375445226566">
-                    <img class="number_icon mr-2 block w-[30px] h-[30px]" src="/phone.svg" alt="telegram logo" >
+                <a class="flex align-middle hover:text-white transition-colors duration-300" href="tel:+375445224566">
+                    <img class="number_icon mr-2 block w-[30px] h-[30px]" src="/phone.svg" alt="phone icon" >
                     <span class="number_text flex align-middle justify-center">+375 (44) 522-45-66</span>
                 </a>
             </li>
@@ -22,7 +22,7 @@ import Logo from "./Logo.astro";
             <li class="header__text_links"><a class="hover:text-white transition-colors duration-300" href="/services">Услуги</a></li>
             <li class="header__text_links"><a class="hover:text-white transition-colors duration-300" href="/about">О компании</a></li>
             <li class="header__text_links"><a class="hover:text-white transition-colors duration-300" href="/contacts">Контакты</a></li>
-            <li class="header_menu__icon">
+            <li class="burger_menu__icon">
                 <div class="icon_line"></div>
                 <div class="icon_line"></div>
                 <div class="icon_line"></div>
@@ -38,7 +38,7 @@ import Logo from "./Logo.astro";
 </header>
 
 <style>
-    nav, .lo {
+    nav {
         z-index: 1;
     }
 
@@ -69,7 +69,7 @@ import Logo from "./Logo.astro";
         font-size: 20px;
     }
 
-    .header_menu__icon {
+    .burger_menu__icon {
         display: none;
         position: relative;
         top: -2px;
@@ -127,7 +127,7 @@ import Logo from "./Logo.astro";
     }
 
     @media (hover: hover) {
-        .header_menu__icon:hover > .icon_line {
+        .burger_menu__icon:hover > .icon_line {
             background-color: #ffffff;
         }
 
@@ -143,7 +143,7 @@ import Logo from "./Logo.astro";
     }
 
     @media screen and (max-width: 800px){
-        .header_menu__icon {
+        .burger_menu__icon {
             display: block;
         }
 
@@ -168,7 +168,7 @@ import Logo from "./Logo.astro";
 <script>
     const burgerMenu = document.querySelector('.burger_menu');
     const lines = document.getElementsByClassName('icon_line');
-    const icon = document.querySelector('.header_menu__icon');
+    const icon = document.querySelector('.burger_menu__icon');
 
     let isExpanded = false;
 
@@ -229,7 +229,7 @@ import Logo from "./Logo.astro";
     }
 
     function handleWindowSize() {
-        window.addEventListener('resize', (e) => {
+        window.addEventListener('resize', () => {
             if (window.innerWidth > 800 && isExpanded) {
                 lines[0].classList.remove('first_line_rotate');
                 lines[1].classList.remove('fade_out_right_line');
