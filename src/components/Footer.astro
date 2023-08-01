@@ -6,78 +6,167 @@ import Logo from "./Logo.astro";
 
 <footer>
     <div class="main_container">
-        <div class="navigation">
-            <h4>Навигация</h4>
+        <div class="navigation footer_group">
+            <h4 class="group_header">Навигация</h4>
             <nav>
                 <ul>
-                    <li><a href="/">Главная страница</a></li>
-                    <li><a href="/services">Наши услуги</a></li>
-                    <li><a href="/about">Онас</a></li>
-                    <li><a href="/contacts">Наши контакты</a></li>
+                    <li><a class="footer_link" href="/">Главная страница</a></li>
+                    <li><a class="footer_link" href="/services">Наши услуги</a></li>
+                    <li><a class="footer_link" href="/about">О нашей компании</a></li>
+                    <li><a class="footer_link" href="/contacts">Наши контакты</a></li>
                 </ul>
             </nav>
         </div>
-        <div class="social">
-            <h4>Социальные сети</h4>
+        <div class="social footer_group">
+            <h4 class="group_header">Социальные сети</h4>
             <ul>
                 <li>
-                    <a href="https://vk.com/" target="_blank">
-                        <img src="" alt="VK icon">
+                    <a class="footer_link" href="https://vk.com/" target="_blank">
+                        <img class="icon" src="/vk.svg" alt="VK icon">
                         <span>VK</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/" target="_blank">
-                        <img src="" alt="Lincedin icon">
+                    <a class="footer_link" href="https://www.linkedin.com/" target="_blank">
+                        <img class="icon" src="/linkedin.svg" alt="lincedin icon">
                         <span>Linkedin</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/" target="_blank">
-                        <img src="" alt="Instagram icon">
+                    <a class="footer_link" href="https://www.instagram.com/" target="_blank">
+                        <img class="icon" src="/instagram.svg" alt="instagram icon">
                         <span>Instagram</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.youtube.com/" target="_blank">
-                        <img src="" alt="Youtube icon">
+                    <a class="footer_link" href="https://www.youtube.com/" target="_blank">
+                        <img class="icon" src="/youtube-play.svg" alt="youtube icon">
                         <span>YouTube</span>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="contacts">
-            <h4>Контакты</h4>
+        <div class="contacts footer_group">
+            <h4 class="group_header">Наши контакты</h4>
             <ul>
                 <li>
-                    <a href="tel:+375445224566">
-                        <img src="/phone.svg" alt="phone icon">
-                        <span>+375 (44) 5224566</span>
+                    <a class="footer_link" href="tel:+375445224566">
+                        <img class="icon" src="/phone.svg" alt="phone icon">
+                        <span>+375 (44) 522-45-66</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <img src="/viber.svg" alt="viber icon">
-                        <span>+375 (44) 5224566</span>
+                    <a class="footer_link" href="mailto:jacobrybalko@gmail.com">
+                        <img class="icon ml-[1px] w-[28px]" src="/email.svg" alt="email icon">
+                        <span class="ml-[2px]">JacobRybalko@gmail.com</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <img src="/telegram.svg" alt="telegram icon">
-                        <span>+375 (44) 5224566</span>
+                    <a class="footer_link" href="viber://contact?number=%2B375445224566" target="_blank">
+                        <img class="icon" src="/viber.svg" alt="viber icon">
+                        <span>Написать в Viber</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="footer_link" href="https://t.me/JacobRybalko" target="_blank">
+                        <img class="icon" src="/telegram.svg" alt="telegram icon">
+                        <span>Написать в Telegram</span>
                     </a>
                 </li>
             </ul>
         </div>
-        <Logo/>
+        <div class="logo_container">
+            <Logo setBackground={true} />
+        </div>
     </div>
     <p class="copyrights">
-        @2023 GeoEngineering. All rights reserved
+        @2023 GeoEngineering. All rights reserved.
     </p>
 </footer>
 
 <style>
     footer {
-        background-color: var(--bg-footer-color);
+        color: #ef4444;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main_container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 2fr;
+    }
+
+    .navigation > nav > ul {
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer_group h4 {
+        border-bottom: 2px solid #ef4444;
+        width: fit-content;
+    }
+
+    .footer_group ul li a span {
+        white-space: nowrap;
+    }
+
+    .group_header {
+        margin-bottom: 20px;
+        font-size: 15px;
+    }
+
+    .footer_link {
+        transition: color linear .3s;
+    }
+
+    .icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
+
+    .copyrights {
+        display: flex;
+        justify-content: center;
+        user-select: none;
+        margin-bottom: 20px;
+        margin-top: 30px;
+    }
+
+    .logo_container {
+        margin: auto 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    @media screen and (hover: hover){
+        .footer_link:hover {
+            color: #ffffff;
+        }
+    }
+
+    @media screen and (max-width: 1000px){
+        .main_container {
+            grid-template-columns: 1fr 1fr;
+            grid-row-gap: 50px;
+        }
+
+        .logo_container {
+            justify-content: flex-start;
+        }
+    }
+
+    @media screen and (max-width: 400px){
+        .main_container {
+            grid-template-columns: 1fr;
+            grid-row-gap: 25px;
+        }
+
+        .logo_container, .main_container {
+            margin-left: 20%;
+        }
     }
 </style>

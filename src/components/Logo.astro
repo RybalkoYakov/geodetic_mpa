@@ -1,5 +1,5 @@
 ---
-
+    const {setBackground} = Astro.props;
 ---
 
 <div
@@ -19,6 +19,8 @@
             justify-center
             align-middle
         "
+
+        style=`${setBackground ? '' : 'background: transparent;'}`
 >
     <a href="/">
         <img class="logo_img block w-[150px] h-[70px] ml-[5px] mt-[11px]" src="/logo_no_bg_refactored.svg" alt="our company logo">
@@ -30,7 +32,6 @@
         div.logo_container {
             width: 112px;
             height: 70px;
-            z-index: 1;
         }
 
         div > a > img.logo_img {
