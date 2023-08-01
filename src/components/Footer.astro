@@ -1,7 +1,83 @@
 ---
+import Logo from "./Logo.astro";
+
 
 ---
 
 <footer>
-    Footer
+    <div class="main_container">
+        <div class="navigation">
+            <h4>Навигация</h4>
+            <nav>
+                <ul>
+                    <li><a href="/">Главная страница</a></li>
+                    <li><a href="/services">Наши услуги</a></li>
+                    <li><a href="/about">Онас</a></li>
+                    <li><a href="/contacts">Наши контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="social">
+            <h4>Социальные сети</h4>
+            <ul>
+                <li>
+                    <a href="https://vk.com/" target="_blank">
+                        <img src="" alt="VK icon">
+                        <span>VK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/" target="_blank">
+                        <img src="" alt="Lincedin icon">
+                        <span>Linkedin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img src="" alt="Instagram icon">
+                        <span>Instagram</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/" target="_blank">
+                        <img src="" alt="Youtube icon">
+                        <span>YouTube</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="contacts">
+            <h4>Контакты</h4>
+            <ul>
+                <li>
+                    <a href="tel:+375445224566">
+                        <img src="/phone.svg" alt="phone icon">
+                        <span>+375 (44) 5224566</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="/viber.svg" alt="viber icon">
+                        <span>+375 (44) 5224566</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="/telegram.svg" alt="telegram icon">
+                        <span>+375 (44) 5224566</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <Logo/>
+    </div>
+    <p class="copyrights">
+        @2023 GeoEngineering. All rights reserved
+    </p>
 </footer>
+
+<style>
+    footer {
+        background-color: var(--bg-footer-color);
+    }
+</style>
