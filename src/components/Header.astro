@@ -1,0 +1,246 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<header class="flex justify-between overflow-hidden mt-3">
+    <Logo/>
+    <nav>
+        <ul class="w-full h-full font-medium flex flex-wrap gap-6 text-[20px] text-red-500 justify-end drop-shadow">
+            <li class="header__icon_link">
+                <a class="flex align-middle hover:text-white transition-colors duration-300" href="viber://chat?number=+375445224566">
+                    <img class="number_icon mr-2 block w-[30px] h-[30px]" src="/viber.svg" alt="telegram logo" >
+                    <span class="number_text flex align-middle justify-center">+375 (44) 522-45-66</span>
+                </a>
+            </li>
+            <li class="mr-10 flex align-middle header__icon_link">
+                <a class="flex align-middle hover:text-white transition-colors duration-300" href="tel:+375445226566">
+                    <img class="number_icon mr-2 block w-[30px] h-[30px]" src="/phone.svg" alt="telegram logo" >
+                    <span class="number_text flex align-middle justify-center">+375 (44) 522-45-66</span>
+                </a>
+            </li>
+            <li class="header__text_links"><a class="hover:text-white transition-colors duration-300" href="/">Главная</a></li>
+            <li class="header__text_links"><a class="hover:text-white transition-colors duration-300" href="/services">Услуги</a></li>
+            <li class="header__text_links"><a class="hover:text-white transition-colors duration-300" href="/about">О компании</a></li>
+            <li class="header__text_links"><a class="hover:text-white transition-colors duration-300" href="/contacts">Контакты</a></li>
+            <li class="header_menu__icon">
+                <div class="icon_line"></div>
+                <div class="icon_line"></div>
+                <div class="icon_line"></div>
+            </li>
+        </ul>
+    </nav>
+    <ul class="burger_menu">
+        <li><a class="hover:text-white transition-colors duration-300" href="/">Главная</a></li>
+        <li><a class="hover:text-white transition-colors duration-300" href="/services">Услуги</a></li>
+        <li><a class="hover:text-white transition-colors duration-300" href="/about">О компании</a></li>
+        <li><a class="hover:text-white transition-colors duration-300" href="/contacts">Контакты</a></li>
+    </ul>
+</header>
+
+<style>
+    nav, .lo {
+        z-index: 1;
+    }
+
+    ul > li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .selected_link {
+        border-bottom: 2px solid #ef4444;
+    }
+
+    .burger_menu {
+        transition: all linear .3s;
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        background-color: #1c1c1c;
+        color: #ef4444;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        font-size: 20px;
+    }
+
+    .header_menu__icon {
+        display: none;
+        position: relative;
+        top: -2px;
+        width: 40px;
+        height: 28px;
+        cursor: pointer;
+        margin: auto 0;
+        z-index: 9;
+    }
+
+    .icon_line {
+        position: absolute;
+        width: 40px;
+        height: 3px;
+        background-color: #ef4444;
+        transition: all linear .3s;
+    }
+
+    .icon_line:nth-child(1) {
+        top: 0;
+    }
+
+    .icon_line:nth-child(2) {
+        top: 50%;
+    }
+
+    .icon_line:nth-child(3) {
+        top: 100%;
+    }
+
+    .first_line_rotate {
+        transform: translateY(14px) rotate(45deg) ;
+    }
+
+    .last_line_rotate {
+        transform: translateY(-14px) rotate(-45deg) ;
+    }
+
+    .fade_out_right_line {
+        transform: translateX(250px);
+    }
+
+    .fade_out_up_line {
+        transform: translateY(-250px);
+    }
+
+    .fade_in_menu {
+        right: 0;
+    }
+
+    .disable_scroll {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    @media (hover: hover) {
+        .header_menu__icon:hover > .icon_line {
+            background-color: #ffffff;
+        }
+
+        .selected_link:hover {
+            border-bottom: 2px solid #ffffff;
+        }
+    }
+
+    @media screen and (max-width: 1200px){
+        a > span.number_text {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 800px){
+        .header_menu__icon {
+            display: block;
+        }
+
+        .header__text_links {
+            display: none;
+        }
+
+        a > img.number_icon {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    @media screen and (max-width: 500px){
+        ul > li.header__icon_link {
+            display: none;
+        }
+    }
+
+</style>
+
+<script>
+    const burgerMenu = document.querySelector('.burger_menu');
+    const lines = document.getElementsByClassName('icon_line');
+    const icon = document.querySelector('.header_menu__icon');
+
+    let isExpanded = false;
+
+    function setActiveLink() {
+        const regExp = /\//g;
+
+        const currentPage = window.location.pathname.replace(regExp, '');
+
+        const mainLink = document.querySelectorAll('ul > li > a[href="/"]');
+        const servicesLink = document.querySelectorAll('ul > li > a[href="/services"]');
+        const aboutLink = document.querySelectorAll('ul > li > a[href="/about"]');
+        const contactsLink = document.querySelectorAll('ul > li > a[href="/contacts"]');
+
+        switch (currentPage) {
+            case '':
+                mainLink.forEach(link => {
+                    link.classList.add('selected_link');
+                })
+                break;
+            case 'services':
+                servicesLink.forEach(link => {
+                    link.classList.add('selected_link');
+                })
+                break;
+            case 'about':
+                aboutLink.forEach(link => {
+                    link.classList.add('selected_link');
+                })
+                break;
+            case 'contacts':
+                contactsLink.forEach(link => {
+                    link.classList.add('selected_link');
+                })
+                break;
+        }
+    }
+
+    function handleMenuIconClick() {
+        icon.addEventListener('click', () => {
+            if (!isExpanded) {
+                lines[0].classList.add('first_line_rotate');
+                lines[1].classList.add('fade_out_right_line');
+                lines[lines.length - 1].classList.add('last_line_rotate');
+                document.body.classList.add('.disable_scroll');
+                burgerMenu.classList.add('fade_in_menu');
+
+                isExpanded = true;
+            } else {
+                lines[0].classList.remove('first_line_rotate');
+                lines[1].classList.remove('fade_out_right_line');
+                lines[lines.length - 1].classList.remove('last_line_rotate');
+                document.body.classList.remove('.disable_scroll');
+                burgerMenu.classList.remove('fade_in_menu');
+
+                isExpanded = false;
+            }
+        })
+    }
+
+    function handleWindowSize() {
+        window.addEventListener('resize', (e) => {
+            if (window.innerWidth > 800 && isExpanded) {
+                lines[0].classList.remove('first_line_rotate');
+                lines[1].classList.remove('fade_out_right_line');
+                lines[lines.length - 1].classList.remove('last_line_rotate');
+                burgerMenu.classList.remove('fade_in_menu');
+                isExpanded = false;
+            }
+        })
+    }
+
+    handleWindowSize();
+    handleMenuIconClick();
+    setActiveLink();
+</script>
