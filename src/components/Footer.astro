@@ -134,6 +134,7 @@ import Logo from "./Logo.astro";
         user-select: none;
         margin-bottom: 20px;
         margin-top: 30px;
+        text-align: center;
     }
 
     .logo_container {
@@ -150,22 +151,32 @@ import Logo from "./Logo.astro";
 
     @media screen and (max-width: 1000px){
         .main_container {
-            grid-template-columns: 1fr 1fr;
-            grid-row-gap: 50px;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .logo_container {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 600px){
+        .main_container {
+            grid-template-columns: 1fr;
+            grid-row-gap: 35px;
         }
 
-        .logo_container {
-            justify-content: flex-start;
+        .footer_group {
+            margin-left: 35%;
         }
     }
 
     @media screen and (max-width: 400px){
-        .main_container {
-            grid-template-columns: 1fr;
-            grid-row-gap: 25px;
+        .footer_group {
+            margin-left: 25%;
         }
+    }
 
-        .logo_container, .main_container {
+    @media screen and (max-width: 340px){
+        .footer_group {
             margin-left: 20%;
         }
     }
