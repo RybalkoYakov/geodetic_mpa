@@ -1,15 +1,14 @@
 ---
-    const {setBackground} = Astro.props;
+
 ---
 
 <div
         class="
             logo_container
-            w-[160px]
-            h-[100px]
+            w-fit
+            h-fit
             my-2
-            bg-stone-800
-            hover:bg-stone-950
+            hover:bg-stone-800
             transition
             duration-300
             rounded-xl
@@ -19,26 +18,17 @@
             justify-center
             align-middle
         "
-
-        style=`${setBackground ? '' : 'background: transparent;'}`
 >
-    <a href="/">
-        <img class="logo_img block w-[150px] h-[70px] ml-[5px] mt-[11px]" src="/logo_no_bg_refactored.svg" alt="our company logo">
+    <a href="/" class="flex justify-center items-center">
+        <img class="logo_img block w-[120px] h-[120px]" src="/logo__own_created.svg" alt="our company logo">
     </a>
 </div>
 
 <style>
     @media screen and (max-width: 800px){
-        div.logo_container {
-            width: 112px;
-            height: 70px;
-        }
-
         div > a > img.logo_img {
-            width: 105px;
-            height: 49px;
-            margin-left: 5px;
-            margin-top: 10px;
+            width: 80px;
+            height: 80px;
         }
     }
 </style>
