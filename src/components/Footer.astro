@@ -9,7 +9,7 @@ import Logo from "./Logo.astro";
         <div class="navigation footer_group">
             <h4 class="group_header">Навигация</h4>
             <nav>
-                <ul>
+                <ul class="navigation_list">
                     <li><a class="footer_link" href="/">Главная страница</a></li>
                     <li><a class="footer_link" href="/services">Наши услуги</a></li>
                     <li><a class="footer_link" href="/about">О нашей компании</a></li>
@@ -159,6 +159,14 @@ import Logo from "./Logo.astro";
     }
 
     @media screen and (max-width: 600px){
+        .navigation > nav > ul.navigation_list {
+            gap: 2px;
+        }
+
+        .group_header {
+            margin-bottom: 10px;
+        }
+
         .main_container {
             grid-template-columns: 1fr;
             grid-row-gap: 35px;
