@@ -8,7 +8,7 @@
         <h3 class="card_title">{title || 'TITLE'}</h3>
         <p class="card_desc">{desc || 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here,'}</p>
         <a class="card_button" href={link || '/services/typography'}>
-            Заказать
+            подробнее
         </a>
     </div>
 </li>
@@ -23,6 +23,7 @@
         align-items: center;
         perspective: 500px;
         perspective-origin: center 20%;
+        z-index: 0;
     }
 
     .card {
@@ -34,7 +35,7 @@
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
         transform: rotateY(3deg);
-        border: 1px solid var(--text-color);
+        border: 1px solid var(--card-main-color);
         transform-style: preserve-3d;
         transform-origin: center center;
         display: flex;
@@ -105,7 +106,7 @@
 <script>
     const cards = document.querySelectorAll('.card') as HTMLElement[];
     cards.forEach(card => {
-        card.addEventListener('mouseover', (e) => {
+        card.addEventListener('mousemove', (e) => {
            e.stopPropagation();
 
             const rect = card.getClientRects();
@@ -132,6 +133,5 @@
             card.style.transform = 'rotateY(3deg)'
         })
     })
-
 
 </script>

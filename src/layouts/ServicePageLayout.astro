@@ -1,0 +1,42 @@
+---
+import PageLayout from "./PageLayout.astro";
+---
+
+<PageLayout>
+    <a class="back_button" href="/services">
+        <img class="back_button__img" src="/arrow-up-square.svg" alt="arrow icon">
+        <span>Назад</span>
+    </a>
+</PageLayout>
+
+<style>
+    .back_button {
+        border: 1px solid var(--text-color);
+        padding: 10px 20px;
+        border-radius: 5px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        width: fit-content;
+        transition: all linear .3s;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .back_button:hover {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+    }
+
+    .back_button:hover > .back_button__img {
+        background-color: var(--bg-color);
+        border-radius: 3px;
+    }
+
+    .back_button__img {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        transition: all linear .3s;
+    }
+</style>
