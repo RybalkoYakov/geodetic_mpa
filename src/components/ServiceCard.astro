@@ -16,7 +16,7 @@
 
 <style>
     .card_container {
-        width: 250px;
+        width: 245px;
         height: 350px;
         display: flex;
         justify-content: center;
@@ -34,7 +34,7 @@
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
         transform: rotateY(3deg);
-        border: 1px solid #ffcc00;
+        border: 1px solid var(--text-color);
         transform-style: preserve-3d;
         transform-origin: center center;
         display: flex;
@@ -120,8 +120,8 @@
 
             const rotationXAmplitude = 20;
             const rotationYAmplitude = 10;
-            const rotationY = (deltaX * rotationYAmplitude)/width;
-            const rotationX = (deltaY * rotationXAmplitude)/height;
+            const rotationY = (deltaX * rotationXAmplitude)/width;
+            const rotationX = (deltaY * rotationYAmplitude)/height;
 
             card.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
         })
