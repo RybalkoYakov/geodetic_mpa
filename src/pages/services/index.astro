@@ -1,5 +1,4 @@
 ---
-
 import PageLayout from "../../layouts/PageLayout.astro";
 import ServiceCard from "../../components/ServiceCard.astro";
 ---
@@ -11,10 +10,34 @@ import ServiceCard from "../../components/ServiceCard.astro";
     keyWords="топографическая съемка, топография участка"
 >
     <ul class="service_cards">
-        <ServiceCard/>
-        <ServiceCard/>
-        <ServiceCard/>
-        <ServiceCard/>
+        <ServiceCard
+            title="Топография"
+            img="/service_cards_images/service_card_image.gif"
+            alt="топографический план"
+            desc="Геодезический процесс получения точных данных о рельефе и объектах местности для картографии, инженерии, планирования и научных исследований."
+            link="/services/topography"
+        />
+        <ServiceCard
+            title="Исполнительные чертежи"
+            img="/service_cards_images/working_drawing_image.gif"
+            alt="мост в графическом стиле"
+            desc="Детализированные технические рисунки, передающие спецификации и инструкции для строительства и производства с учетом размеров, материалов и конструкции."
+            link="/services/working_drawing"
+        />
+        <ServiceCard
+            title="Вынос проектов"
+            img="/service_cards_images/project_to_world_image.gif"
+            alt="инженер за работой"
+            desc="Процесс переноса планов и измерений инженерного проекта на реальный местный рельеф для строительных и геодезических работ."
+            link="/services/project_field_layout"
+        />
+        <ServiceCard
+            title="Геодезическая поддержка"
+            img="/service_cards_images/geodetic_support_image.gif"
+            alt="геодезическое оборудование"
+            desc="Систематическое обеспечение точных геодезических данных и измерений для поддержания точности и надежности инженерных и строительных проектов."
+            link="/services/geodetic_support"
+        />
         <ServiceCard/>
         <ServiceCard/>
         <ServiceCard/>

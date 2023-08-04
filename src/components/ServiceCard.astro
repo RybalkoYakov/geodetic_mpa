@@ -1,5 +1,13 @@
 ---
-    const {title, img, alt, desc, link} = Astro.props;
+    interface ServiceCardProps {
+        title: string
+        img: string
+        alt: string
+        desc: string
+        link: string
+    }
+
+    const {title, img, alt, desc, link} = Astro.props as ServiceCardProps;
 ---
 
 <li class="card_container">
@@ -7,7 +15,7 @@
         <img class="card_img" src={img || '/favicon.svg'} alt={alt || 'default alt'}>
         <h3 class="card_title">{title || 'TITLE'}</h3>
         <p class="card_desc">{desc || 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here,'}</p>
-        <a class="card_button" href={link || '/services/typography'}>
+        <a class="card_button" href={link || '/services'}>
             подробнее
         </a>
     </div>
@@ -27,8 +35,8 @@
     }
 
     .card {
-        padding: 20px;
-        width: 250px;
+        padding: 15px;
+        width: 245px;
         height: 350px;
         background: var(--card-bg-color);
         border-radius: 10px;
@@ -51,10 +59,11 @@
         width: fit-content;
         height: 100px;
         object-fit: contain;
+        border-radius: 5px;
     }
 
     .card_title {
-        font-size: 18px;
+        font-size: 15px;
         font-weight: bold;
         line-height: 18px;
         height: 18px;
@@ -65,11 +74,12 @@
 
     .card_desc {
         font-size: 12px;
+        line-height: 15px;
         text-align: justify;
-        height: 70px;
+        height: 88px;
         overflow: hidden;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;
         color: var(--card-main-color);
     }
@@ -124,7 +134,7 @@
             const rotationY = (deltaX * rotationXAmplitude)/width;
             const rotationX = (deltaY * rotationYAmplitude)/height;
 
-            card.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+            card.style.transform = `rotateY(${-rotationY}deg) rotateX(${-rotationX}deg)`;
         })
     })
 
@@ -133,5 +143,4 @@
             card.style.transform = 'rotateY(3deg)'
         })
     })
-
 </script>

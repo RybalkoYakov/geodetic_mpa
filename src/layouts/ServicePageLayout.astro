@@ -3,10 +3,13 @@ import PageLayout from "./PageLayout.astro";
 ---
 
 <PageLayout>
-    <a class="back_button" href="/services">
-        <img class="back_button__img" src="/arrow-up-square.svg" alt="arrow icon">
-        <span>Назад</span>
-    </a>
+    <div class="mb-10">
+        <a class="back_button" href="/services">
+            <img class="back_button__img" src="/arrow-up-square.svg" alt="arrow icon">
+            <span>Назад</span>
+        </a>
+    </div>
+    <slot/>
 </PageLayout>
 
 <style>
