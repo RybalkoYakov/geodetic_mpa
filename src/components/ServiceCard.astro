@@ -1,0 +1,137 @@
+---
+    const {title, img, alt, desc, link} = Astro.props;
+---
+
+<li class="card_container">
+    <div class="card">
+        <img class="card_img" src={img || '/favicon.svg'} alt={alt || 'default alt'}>
+        <h3 class="card_title">{title || 'TITLE'}</h3>
+        <p class="card_desc">{desc || 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here,'}</p>
+        <a class="card_button" href={link || '/services/typography'}>
+            Заказать
+        </a>
+    </div>
+</li>
+
+
+<style>
+    .card_container {
+        width: 250px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 500px;
+        perspective-origin: center 20%;
+    }
+
+    .card {
+        padding: 20px;
+        width: 250px;
+        height: 350px;
+        background: var(--card-bg-color);
+        border-radius: 10px;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        transform: rotateY(3deg);
+        border: 1px solid #ffcc00;
+        transform-style: preserve-3d;
+        transform-origin: center center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 15px;
+        transition: all linear .3s;
+        user-select: none;
+    }
+
+    .card_img {
+        display: block;
+        width: fit-content;
+        height: 100px;
+        object-fit: contain;
+    }
+
+    .card_title {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 18px;
+        height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: var(--card-main-color);
+    }
+
+    .card_desc {
+        font-size: 12px;
+        text-align: justify;
+        height: 70px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        color: var(--card-main-color);
+    }
+
+    .card_button {
+        font-weight: bold;
+        transition: all linear .3s;
+        width: 150px;
+        height: 50px;
+        border: 1px solid var(--card-main-color);
+        color: var(--card-main-color);
+        border-radius: 5px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        margin-top: 10px;
+    }
+
+    .card_button:hover {
+        color: var(--bg-color);
+        background-color: var(--card-main-color);
+    }
+
+    @media (hover: hover) {
+        .card:hover {
+            box-shadow: 0 5px 30px var(--card-shadow-color);
+        }
+    }
+</style>
+
+
+<script>
+    const cards = document.querySelectorAll('.card') as HTMLElement[];
+    cards.forEach(card => {
+        card.addEventListener('mouseover', (e) => {
+           e.stopPropagation();
+
+            const rect = card.getClientRects();
+            const x = e.clientX - rect[0].x;
+            const y = e.clientY - rect[0].y;
+
+            const width = parseInt(getComputedStyle(card).width.replace('px', ''));
+            const height = parseInt(getComputedStyle(card).height.replace('px', ''));
+
+            const deltaX = x - width / 2;
+            const deltaY = - y + height / 2;
+
+            const rotationXAmplitude = 20;
+            const rotationYAmplitude = 10;
+            const rotationY = (deltaX * rotationYAmplitude)/width;
+            const rotationX = (deltaY * rotationXAmplitude)/height;
+
+            card.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+        })
+    })
+
+    cards.forEach(card => {
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateY(3deg)'
+        })
+    })
+
+
+</script>

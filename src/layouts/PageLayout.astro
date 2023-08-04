@@ -48,7 +48,11 @@ const {
 	:root {
 		font-size: 10px;
 		--bg-color: #1c1c1c;
-		--text-color: #ffffff;
+		--text-color: #ef4444;
+
+		--card-main-color: #ffdd28;
+		--card-shadow-color: #ffcc0020;
+		--card-bg-color: rgba(239, 37, 37, 0.15);
 	}
 	* {
 		margin: 0;
@@ -80,16 +84,17 @@ const {
 		color: var(--text-color);
 	}
 
-	main {
-		flex: 1;
-	}
-
 	main,
 	header,
 	footer {
 		max-width: 1920px;
 		width: 100%;
 		padding: 0 50px;
+	}
+
+	main {
+		flex: 1;
+		padding: 50px;
 	}
 
 	@media screen and (max-width: 700px){
