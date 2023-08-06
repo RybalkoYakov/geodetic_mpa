@@ -49,14 +49,15 @@ const {
 		--text-color: #ef4444;
 
 		--card-main-color: #ef4444;
-		--card-shadow-color: rgba(239, 70, 70, 0.19);
-		--card-bg-color: #ee939310;
+		--card-shadow-color: #ef444425;
+		--card-bg-color: #00000010;
 	}
 
 	* {
 		margin: 0;
 		padding: 0;
 		border: 0;
+		font-family: Roboto, sans-serif;
 		box-sizing: border-box;
 		-webkit-tap-highlight-color: transparent;
 	}
@@ -81,6 +82,7 @@ const {
 		align-items: center;
 		background-color: var(--bg-color);
 		color: var(--text-color);
+		overflow-x: hidden;
 	}
 
 	main,
@@ -94,6 +96,24 @@ const {
 	main {
 		flex: 1;
 		padding: 50px;
+	}
+
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #3a3a3a;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #ef4444;
+		transition: all linear .3s;
+		border-radius: 3px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: #ffffff;
 	}
 
 	@media screen and (max-width: 700px){
