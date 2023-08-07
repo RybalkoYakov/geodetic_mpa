@@ -47,13 +47,13 @@
         border: 2px solid #ef4444;
         border-radius: 5px;
         padding: 20px;
-        max-width: 900px;
     }
 
     .order_form__heading {
         font-size: 20px;
         margin-bottom: 30px;
         text-align: center;
+        font-weight: bold;
     }
 
     .form_content {
@@ -110,6 +110,7 @@
     .form_button:hover {
         background-color: #ef4444;
         color: #000000;
+        border-color: #000000;
     }
 
     @media screen and (max-width: 1000px){
@@ -119,7 +120,57 @@
         }
     }
 
-    @media screen and (max-width: 550px){
-
+    @media screen and (max-width: 450px){
+        .order_form__heading {
+            font-size: 15px;
+        }
     }
 </style>
+
+<script>
+    const serviceId = 'service_m3h60kb';
+    const templateId = 'template_p7myuqu';
+    const publicKey = 'fLtmCOTLDsYtEibkF';
+
+    import emailjs from '@emailjs/browser';
+    emailjs.init(publicKey);
+
+    const fioInput = document.querySelector('#fio') as HTMLInputElement;
+    const emailInput = document.querySelector('#email') as HTMLInputElement;
+    const phoneInput = document.querySelector('#phone') as HTMLInputElement;
+    const messageTextarea = document.querySelector('#message') as HTMLTextAreaElement;
+    const submitButton = document.querySelector('.form_button') as HTMLElement;
+
+
+    submitButton.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        const message = `Вопрос от: ${fioInput.value} \n Номер телефона: ${phoneInput.value} \n  Email: ${emailInput.value} \n Вопрос: ${messageTextarea.value}`
+
+        function getParams() {
+            return {
+                name: fioInput.value,
+                email: emailInput.value,
+                message
+            };
+        }
+
+        emailjs.send(serviceId, templateId, getParams())
+            .then(res => {
+                fioInput.value = '';
+                emailInput.value = '';
+                phoneInput.value = '';
+                messageTextarea.value = '';
+
+                alert('Message successfully sent.');
+
+
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    })
+
+
+
+
+</script>
