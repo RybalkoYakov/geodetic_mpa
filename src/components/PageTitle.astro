@@ -1,0 +1,21 @@
+---
+interface PageTitleProps {
+    title: string
+}
+
+const {title} = Astro.props as PageTitleProps;
+---
+<h1 class="service_page__title">{title}</h1>
+
+<style>
+    .service_page__title {
+        font-size: 35px;
+        text-align: center;
+        margin: 0 0 50px;
+        white-space: nowrap;
+    }
+
+    @media screen and (max-width: 1000px){
+
+    }
+</style>
