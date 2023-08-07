@@ -109,8 +109,8 @@
 
     .form_button:hover {
         background-color: #ef4444;
-        color: #000000;
-        border-color: #000000;
+        color: #ffffff;
+        border-color: #ffffff;
     }
 
     @media screen and (max-width: 1000px){
@@ -128,12 +128,11 @@
 </style>
 
 <script>
+    import emailjs from '@emailjs/browser';
+
     const serviceId = 'service_m3h60kb';
     const templateId = 'template_p7myuqu';
     const publicKey = 'fLtmCOTLDsYtEibkF';
-
-    import emailjs from '@emailjs/browser';
-    emailjs.init(publicKey);
 
     const fioInput = document.querySelector('#fio') as HTMLInputElement;
     const emailInput = document.querySelector('#email') as HTMLInputElement;
@@ -141,6 +140,19 @@
     const messageTextarea = document.querySelector('#message') as HTMLTextAreaElement;
     const submitButton = document.querySelector('.form_button') as HTMLElement;
 
+    emailjs.init(publicKey);
+
+    function isFormValid() {
+        const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const phoneRegExp = /^\+\d{12}$/;
+
+        const isValidFio = fioInput.value !== '';
+        const isEmailValid = emailRegExp.test(emailInput.value);
+        const isPhoneValid = phoneRegExp.test(phoneInput.value);
+        const isMessageTextAreaValid = messageTextarea.value !== '';
+
+        return isValidFio && isEmailValid && isPhoneValid && isMessageTextAreaValid;
+    }
 
     submitButton.addEventListener('click', (evt) => {
         evt.preventDefault();
@@ -154,23 +166,20 @@
             };
         }
 
-        emailjs.send(serviceId, templateId, getParams())
-            .then(res => {
-                fioInput.value = '';
-                emailInput.value = '';
-                phoneInput.value = '';
-                messageTextarea.value = '';
-
-                alert('Message successfully sent.');
-
-
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
+        if (isFormValid()) {
+            emailjs.send(serviceId, templateId, getParams())
+                .then(_ => {
+                    fioInput.value = '';
+                    emailInput.value = '';
+                    phoneInput.value = '';
+                    messageTextarea.value = '';
+                    alert('Message successfully sent.');
+                })
+                .catch(err => {
+                    console.log(err.message);
+                })
+        } else {
+            alert('Form is invalid');
+        }
     })
-
-
-
-
 </script>
