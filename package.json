@@ -14,5 +14,8 @@
     "@emailjs/browser": "^3.11.0",
     "astro": "^2.9.6",
     "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "astro-compress": "2.0.1"
   }
 }
