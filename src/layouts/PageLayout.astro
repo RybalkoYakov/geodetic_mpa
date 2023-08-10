@@ -194,15 +194,21 @@ const {
 	function moveStar(star: Star) {
 		const currentPosition = star.position;
 
-		const incrementX = Math.random() > 0.5 ? 1 : -1;
-		const incrementY = Math.random() > 0.5 ? 1 : -1;
+		// const incrementX = Math.random() > 0.5 ? 2 : -2;
+		// const incrementY = Math.random() > 0.5 ? 2 : -2;
+
+		const maxIncrementX = 1;
+		const maxIncrementY = 5;
+
+		const incrementX = Math.random() * maxIncrementX;
+		const incrementY = Math.random() * maxIncrementY;
 
 		const nextStarPosition : Position = {positionX: currentPosition.positionX + incrementX, positionY: currentPosition.positionY + incrementY}
 
 		star.position = nextStarPosition;
 
 		ctx.fillStyle = canvasBgColor;
-		ctx.fillRect(currentPosition.positionX, currentPosition.positionY, starSize, starSize);
+		ctx.fillRect(currentPosition.positionX - maxIncrementX, currentPosition.positionY - maxIncrementY, starSize + 2 * maxIncrementX, starSize + 2 * maxIncrementY);
 
 		ctx.fillStyle = starColor;
 		ctx.fillRect(nextStarPosition.positionX, nextStarPosition.positionY, starSize, starSize);
@@ -216,12 +222,11 @@ const {
 		)
 		{
 			ctx.fillStyle = canvasBgColor;
-			ctx.fillRect(currentPosition.positionX - 1, currentPosition.positionY - 1, starSize + 2, starSize + 2);
+			ctx.fillRect(currentPosition.positionX - 2, currentPosition.positionY - 2, starSize + 4, starSize + 4);
 			star.position = getRandomPositionOnScreen();
 			console.log(star);
 		}
 	}
-
 
 	generateStars();
 
