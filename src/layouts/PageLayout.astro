@@ -198,10 +198,10 @@ const {
 		// const incrementY = Math.random() > 0.5 ? 2 : -2;
 
 		const maxIncrementX = 1;
-		const maxIncrementY = 5;
+		const maxIncrementY = 10;
 
-		const incrementX = Math.random() * maxIncrementX;
-		const incrementY = Math.random() * maxIncrementY;
+		const incrementX = maxIncrementX;
+		const incrementY = maxIncrementY;
 
 		const nextStarPosition : Position = {positionX: currentPosition.positionX + incrementX, positionY: currentPosition.positionY + incrementY}
 
@@ -222,7 +222,7 @@ const {
 		)
 		{
 			ctx.fillStyle = canvasBgColor;
-			ctx.fillRect(currentPosition.positionX - 2, currentPosition.positionY - 2, starSize + 4, starSize + 4);
+			ctx.fillRect(currentPosition.positionX - maxIncrementX, currentPosition.positionY - maxIncrementY, starSize + 2 * maxIncrementX, starSize + 2 * maxIncrementY);
 			star.position = getRandomPositionOnScreen();
 			console.log(star);
 		}
