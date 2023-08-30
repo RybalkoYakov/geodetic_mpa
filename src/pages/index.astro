@@ -1,5 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import PageTitle from "../components/PageTitle.astro";
+import Form from "../components/Form.astro";
 ---
 
 <PageLayout
@@ -7,9 +9,118 @@ import PageLayout from '../layouts/PageLayout.astro';
 	description="Добро пожаловать на наш сайт геодезических услуг! Мы предоставляем широкий спектр высококачественных геодезических услуг для различных отраслей и проектов. Наша команда опытных специалистов обеспечит точные измерения, надежные данные и эффективные решения для ваших проектов."
 	keyWords="геодезические услуги, геодезические услуги минск, топографическая съемка, топография участка, инжинерные изыскания, исполнительня съемка"
 >
-	Index
+	<section class="hero_section">
+		<PageTitle title="GEOENGINEERING"/>
+		<p class="subtitle">Точные данные для надежных измерений и результатов.</p>
+		<div class="hero_section__container">
+			<div class="text_container">
+				<p>Мы - ваш надежный партнер в области геодезии. Специализируемся на топографических и исполнительных съемках. Опытные специалисты и профессиональное оборудование обеспечивают точные данные в любых ситуациях. Ваш успех - наша цель.</p>
+			</div>
+			<div class="button_container">
+				<a href="#make_order">
+					Связаться с нами
+				</a>
+			</div>
+			<div class="img_container">
+				<img src="/public/logo__own_created.svg" alt="">
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h2>second section</h2>
+	</section>
+
+	<section>
+		<h2>third section</h2>
+	</section>
+
+	<section>
+		<h2>fourth section</h2>
+	</section>
+
+	<section id="make_order">
+		<h2>Связаться с нами</h2>
+		<Form/>
+	</section>
 </PageLayout>
 
 <style>
-	
+	.hero_section {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	.subtitle {
+		font-size: 18px;
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	.hero_section__container {
+		margin-top: 20px;
+		display: grid;
+		grid-column-gap: 20px;
+		grid-row-gap: 40px;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.text_container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.text_container > p {
+		font-size: 15px;
+		text-align: justify;
+	}
+
+	.button_container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.button_container > a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 250px;
+		height: 60px;
+		border: 2px solid #ef4444;
+		border-radius: 5px;
+		font-size: 22px;
+		transition: all linear .3s;
+		cursor: pointer;
+		font-weight: bold;
+	}
+
+	.button_container > a:hover {
+		background-color: #ef4444;
+		color: #ffffff;
+		border-color: #ffffff;
+	}
+
+	.img_container {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.hero_section__container > div > img {
+		width: 300px;
+		height: 300px;
+		display: inline-block;
+	}
+
+	@media (max-width: 1000px) {
+		.hero_section__container {
+			grid-template-columns: 1fr;
+		}
+
+		.img_container {
+			justify-content: center;
+		}
+	}
 </style>
